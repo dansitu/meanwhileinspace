@@ -15,8 +15,8 @@ svg.starfield {
 }
 
 .star.dim {
-  fill: #aaa;
+  fill: #666;
 }
 .star.bright {
-  fill: white;
+  fill: #eee;
 }

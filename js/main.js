@@ -7,17 +7,15 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
 
   // var stars = generateStars();
   var stars = {
-    small: d3.range(100).map(function() {
-      return {
-        x: Math.floor(Math.random()*WIDTH+1)
-        , y: Math.floor(Math.random()*HEIGHT+1)
-      };
+    dim: d3.range(100).map(function() {
+      return randomPosition(WIDTH, HEIGHT)
+    })
+    , bright: d3.range(10).map(function() {
+      return randomPosition(WIDTH, HEIGHT)
     })
   };
 
   var dimStar = function(chain){
-    console.log(chain);
-    console.log(this);
     chain.append('rect')
       .attr('class', 'star dim')
       .attr('x', function(star){return star.x})
@@ -35,10 +33,23 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
       .attr('height', 4);
   };
 
-  starfield.selectAll('rect')
-    .data(stars.small)
+  starfield.selectAll('g.dim')
+    .data(stars.dim)
     .enter()
     .append('g')
     .call(dimStar);
 
+  starfield.selectAll('g.bright')
+    .data(stars.bright)
+    .enter()
+    .append('g')
+    .call(brightStar);
+
 });
+
+function randomPosition(width, height){
+  return {
+    x: Math.floor(Math.random()*width+1)
+      , y: Math.floor(Math.random()*height+1)
+  };
+}
