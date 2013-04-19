@@ -26,3 +26,6 @@ svg.starfield {
 .star.nova-petal {
   fill: #666;
 }
+.star.nova-petal.dim {
+  fill: #333;
+}
