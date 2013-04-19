@@ -22,7 +22,7 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
     , nova: d3.range(RATIO*3).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
-    , bigNova: d3.range(RATIO*3).map(function() {
+    , bigNova: d3.range(RATIO*6).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
   };
@@ -80,11 +80,11 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
 
   var bigNovaStar = function(chain){
     var core = chain.append('rect')
-      .attr('class', 'star nova-core')
-      .attr('x', function(star){return star.x})
-      .attr('y', function(star){return star.y})
-      .attr('width', 4)
-      .attr('height', 4);
+        .attr('class', 'star nova-core')
+        .attr('x', function(star){return star.x})
+        .attr('y', function(star){return star.y})
+        .attr('width', 4)
+        .attr('height', 4);
     var petal1 = chain.append('rect')
       .attr('class', 'star nova-petal')
       .attr('x', function(star){return star.x})
@@ -157,7 +157,39 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
     .data(stars.bigNova)
     .enter()
     .append('g')
+    .attr('class', 'big-nova')
     .call(bigNovaStar);
+
+  var twinkle_bigNova = function(){
+
+    // Select all the big novae
+    var bigNovae = starfield.selectAll('g.big-nova');
+
+    // Choose one at random to animate
+    var randomIndex = Math.floor(Math.random()*bigNovae[0].length);
+    
+    // I'm sure there's a better way to select the random
+    // element than this
+    bigNovae.each(function(datum, index){
+      if(index !== randomIndex) return;
+
+      // Animate the transition
+      d3.select(this)
+        .selectAll('rect.nova-petal:not(.dim)')
+        .transition()
+        .duration(500)
+        .style('fill', '#888')
+        .transition()
+        .duration(500)
+        .style('fill', '#666');
+    });
+
+    // Twinkle again soon
+    setTimeout(twinkle_bigNova, 6000 );
+  
+  }
+
+  twinkle_bigNova();
 
 });
 
