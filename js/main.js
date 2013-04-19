@@ -5,12 +5,18 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
   var WIDTH = d3.select('.starfield')[0][0].clientWidth;
   var HEIGHT = d3.select('.starfield')[0][0].clientHeight;
 
-  // var stars = generateStars();
+  var AREA = WIDTH * HEIGHT;
+
+  // This is the ratio of my developer window size to the
+  // current window size. Use it to keep star density similar
+  // to what I have been working with.
+  var RATIO = 1/1700000 * AREA;
+
   var stars = {
-    dim: d3.range(100).map(function() {
+    dim: d3.range(RATIO*150).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
-    , bright: d3.range(10).map(function() {
+    , bright: d3.range(RATIO*10).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
   };
