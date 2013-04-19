@@ -20,3 +20,9 @@ svg.starfield {
 .star.bright {
   fill: #eee;
 }
+.star.nova-core {
+  fill: #eee;
+}
+.star.nova-petal {
+  fill: #666;
+}
