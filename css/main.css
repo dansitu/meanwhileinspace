@@ -14,6 +14,9 @@ svg.starfield {
   background-color: #00181e;
 }
 
-rect.star {
+.star.dim {
+  fill: #aaa;
+}
+.star.bright {
   fill: white;
 }
