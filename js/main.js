@@ -10,7 +10,7 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
     small: d3.range(100).map(function() {
       return {
         x: Math.floor(Math.random()*WIDTH+1)
-        , y: Math.floor(Math.random()*WIDTH+1)
+        , y: Math.floor(Math.random()*HEIGHT+1)
       };
     })
   };
