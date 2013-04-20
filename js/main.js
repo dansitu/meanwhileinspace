@@ -19,6 +19,9 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
     , bright: d3.range(RATIO*10).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
+    , red: d3.range(RATIO*5).map(function() {
+      return randomPosition(WIDTH, HEIGHT)
+    })
     , nova: d3.range(RATIO*3).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
@@ -39,6 +42,16 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
 
   var brightStar = function(chain){
     chain.attr('class', 'bright')
+      .append('rect')
+      .attr('class', 'star')
+      .attr('x', function(star){return star.x})
+      .attr('y', function(star){return star.y})
+      .attr('width', 4)
+      .attr('height', 4);
+  };
+
+  var redStar = function(chain){
+    chain.attr('class', 'red')
       .append('rect')
       .attr('class', 'star')
       .attr('x', function(star){return star.x})
@@ -150,6 +163,12 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
     .enter()
     .append('g')
     .call(brightStar);
+
+  starfield.selectAll('g.red')
+    .data(stars.red)
+    .enter()
+    .append('g')
+    .call(redStar);
 
   starfield.selectAll('g.nova')
     .data(stars.nova)

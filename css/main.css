@@ -20,6 +20,9 @@ g.dim .star {
 g.bright .star {
   fill: #eee;
 }
+g.red .star {
+  fill: #6a0001;
+}
 .nova-core {
   fill: #eee;
 }
