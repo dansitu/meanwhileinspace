@@ -2,6 +2,8 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
 
   var starfield = d3.select('.starfield');
 
+  var STARSIZE = 2;
+
   var WIDTH = d3.select('.starfield')[0][0].clientWidth;
   var HEIGHT = d3.select('.starfield')[0][0].clientHeight;
 
@@ -16,16 +18,16 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
     dim: d3.range(RATIO*150).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
-    , bright: d3.range(RATIO*10).map(function() {
+    , bright: d3.range(RATIO*20).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
-    , red: d3.range(RATIO*5).map(function() {
+    , red: d3.range(RATIO*8).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
-    , nova: d3.range(RATIO*3).map(function() {
+    , nova: d3.range(RATIO*5).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
-    , bigNova: d3.range(RATIO*6).map(function() {
+    , bigNova: d3.range(RATIO*12).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
   };
@@ -36,8 +38,8 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
       .attr('class', 'star')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
   };
 
   var brightStar = function(chain){
@@ -46,8 +48,8 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
       .attr('class', 'star')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
   };
 
   var redStar = function(chain){
@@ -56,8 +58,8 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
       .attr('class', 'star')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
   };
 
   var novaStar = function(chain){
@@ -66,32 +68,32 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
       .attr('class', 'nova-core')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
     var petal1 = chain.append('rect')
       .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x})
-      .attr('y', function(star){return star.y-4})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('y', function(star){return star.y-STARSIZE})
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
     var petal2 = chain.append('rect')
       .attr('class', 'nova-petal')
-      .attr('x', function(star){return star.x+4})
+      .attr('x', function(star){return star.x+STARSIZE})
       .attr('y', function(star){return star.y})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
     var petal3 = chain.append('rect')
       .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x})
-      .attr('y', function(star){return star.y+4})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('y', function(star){return star.y+STARSIZE})
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
     var petal4 = chain.append('rect')
       .attr('class', 'nova-petal')
-      .attr('x', function(star){return star.x-4})
+      .attr('x', function(star){return star.x-STARSIZE})
       .attr('y', function(star){return star.y})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
   };
 
   var bigNovaStar = function(chain){
@@ -100,56 +102,56 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
         .attr('class', 'nova-core')
         .attr('x', function(star){return star.x})
         .attr('y', function(star){return star.y})
-        .attr('width', 4)
-        .attr('height', 4);
+        .attr('width', STARSIZE)
+        .attr('height', STARSIZE);
     var petal1 = chain.append('rect')
       .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x})
-      .attr('y', function(star){return star.y-4})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('y', function(star){return star.y-STARSIZE})
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
     var petal1a = chain.append('rect')
       .attr('class', 'nova-petal dim')
       .attr('x', function(star){return star.x})
-      .attr('y', function(star){return star.y-8})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('y', function(star){return star.y-(STARSIZE*2)})
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
     var petal2 = chain.append('rect')
       .attr('class', 'nova-petal')
-      .attr('x', function(star){return star.x+4})
+      .attr('x', function(star){return star.x+STARSIZE})
       .attr('y', function(star){return star.y})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
     var petal2a = chain.append('rect')
       .attr('class', 'nova-petal dim')
-      .attr('x', function(star){return star.x+8})
+      .attr('x', function(star){return star.x+(STARSIZE*2)})
       .attr('y', function(star){return star.y})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
     var petal3 = chain.append('rect')
       .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x})
-      .attr('y', function(star){return star.y+4})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('y', function(star){return star.y+STARSIZE})
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
     var petal3a = chain.append('rect')
       .attr('class', 'nova-petal dim')
       .attr('x', function(star){return star.x})
-      .attr('y', function(star){return star.y+8})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('y', function(star){return star.y+(STARSIZE*2)})
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
     var petal4 = chain.append('rect')
       .attr('class', 'nova-petal')
-      .attr('x', function(star){return star.x-4})
+      .attr('x', function(star){return star.x-STARSIZE})
       .attr('y', function(star){return star.y})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
     var petal4a = chain.append('rect')
       .attr('class', 'nova-petal dim')
-      .attr('x', function(star){return star.x-8})
+      .attr('x', function(star){return star.x-(STARSIZE*2)})
       .attr('y', function(star){return star.y})
-      .attr('width', 4)
-      .attr('height', 4);
+      .attr('width', STARSIZE)
+      .attr('height', STARSIZE);
   };
 
   starfield.selectAll('g.dim')
