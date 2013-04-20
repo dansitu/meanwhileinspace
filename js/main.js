@@ -15,7 +15,7 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
   var RATIO = 1/1700000 * AREA;
 
   var stars = {
-    dim: d3.range(RATIO*150).map(function() {
+    dim: d3.range(RATIO*200).map(function() {
       return randomPosition(WIDTH, HEIGHT)
     })
     , bright: d3.range(RATIO*20).map(function() {
