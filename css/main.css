@@ -14,18 +14,18 @@ svg.starfield {
   background-color: #00181e;
 }
 
-.star.dim {
+g.dim .star {
   fill: #666;
 }
-.star.bright {
+g.bright .star {
   fill: #eee;
 }
-.star.nova-core {
+.nova-core {
   fill: #eee;
 }
-.star.nova-petal {
+.nova-petal {
   fill: #666;
 }
-.star.nova-petal.dim {
+.nova-petal.dim {
   fill: #333;
 }

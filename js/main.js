@@ -28,8 +28,9 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
   };
 
   var dimStar = function(chain){
-    chain.append('rect')
-      .attr('class', 'star dim')
+    chain.attr('class', 'dim')
+      .append('rect')
+      .attr('class', 'star')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y})
       .attr('width', 4)
@@ -37,8 +38,9 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
   };
 
   var brightStar = function(chain){
-    chain.append('rect')
-      .attr('class', 'star bright')
+    chain.attr('class', 'bright')
+      .append('rect')
+      .attr('class', 'star')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y})
       .attr('width', 4)
@@ -46,32 +48,33 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
   };
 
   var novaStar = function(chain){
-    var core = chain.append('rect')
-      .attr('class', 'star nova-core')
+    var core = chain.attr('class', 'nova')
+      .append('rect')
+      .attr('class', 'nova-core')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y})
       .attr('width', 4)
       .attr('height', 4);
     var petal1 = chain.append('rect')
-      .attr('class', 'star nova-petal')
+      .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y-4})
       .attr('width', 4)
       .attr('height', 4);
     var petal2 = chain.append('rect')
-      .attr('class', 'star nova-petal')
+      .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x+4})
       .attr('y', function(star){return star.y})
       .attr('width', 4)
       .attr('height', 4);
     var petal3 = chain.append('rect')
-      .attr('class', 'star nova-petal')
+      .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y+4})
       .attr('width', 4)
       .attr('height', 4);
     var petal4 = chain.append('rect')
-      .attr('class', 'star nova-petal')
+      .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x-4})
       .attr('y', function(star){return star.y})
       .attr('width', 4)
@@ -79,56 +82,57 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
   };
 
   var bigNovaStar = function(chain){
-    var core = chain.append('rect')
-        .attr('class', 'star nova-core')
+    var core = chain.attr('class', 'big-nova')
+        .append('rect')
+        .attr('class', 'nova-core')
         .attr('x', function(star){return star.x})
         .attr('y', function(star){return star.y})
         .attr('width', 4)
         .attr('height', 4);
     var petal1 = chain.append('rect')
-      .attr('class', 'star nova-petal')
+      .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y-4})
       .attr('width', 4)
       .attr('height', 4);
     var petal1a = chain.append('rect')
-      .attr('class', 'star nova-petal dim')
+      .attr('class', 'nova-petal dim')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y-8})
       .attr('width', 4)
       .attr('height', 4);
     var petal2 = chain.append('rect')
-      .attr('class', 'star nova-petal')
+      .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x+4})
       .attr('y', function(star){return star.y})
       .attr('width', 4)
       .attr('height', 4);
     var petal2a = chain.append('rect')
-      .attr('class', 'star nova-petal dim')
+      .attr('class', 'nova-petal dim')
       .attr('x', function(star){return star.x+8})
       .attr('y', function(star){return star.y})
       .attr('width', 4)
       .attr('height', 4);
     var petal3 = chain.append('rect')
-      .attr('class', 'star nova-petal')
+      .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y+4})
       .attr('width', 4)
       .attr('height', 4);
     var petal3a = chain.append('rect')
-      .attr('class', 'star nova-petal dim')
+      .attr('class', 'nova-petal dim')
       .attr('x', function(star){return star.x})
       .attr('y', function(star){return star.y+8})
       .attr('width', 4)
       .attr('height', 4);
     var petal4 = chain.append('rect')
-      .attr('class', 'star nova-petal')
+      .attr('class', 'nova-petal')
       .attr('x', function(star){return star.x-4})
       .attr('y', function(star){return star.y})
       .attr('width', 4)
       .attr('height', 4);
     var petal4a = chain.append('rect')
-      .attr('class', 'star nova-petal dim')
+      .attr('class', 'nova-petal dim')
       .attr('x', function(star){return star.x-8})
       .attr('y', function(star){return star.y})
       .attr('width', 4)
@@ -157,7 +161,6 @@ require(['d3', 'lib/domReady!'], function(d3, doc){
     .data(stars.bigNova)
     .enter()
     .append('g')
-    .attr('class', 'big-nova')
     .call(bigNovaStar);
 
   var twinkle_bigNova = function(){
